@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Statistik Penduduk Desa</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            background-color: #f3f4f6; 
+            margin: 0; 
+            padding: 0; 
+        }
+        .container { 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            padding: 20px; 
+        }
+        .nav {
+            background-color: #3b82f6; 
+            padding: 15px; 
+            margin-bottom: 20px;
+        }
+        .nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        .stat-card {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        .stat-card h2 {
+            color: #4b5563;
+            margin-bottom: 10px;
+        }
+        .stat-card p {
+            color: #3b82f6;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: white;
+        }
+        table, th, td {
+            border: 1px solid #d1d5db;
+        }
+        th, td {
+            padding: 10px;
+            text-align: center;
+        }
+        th {
+            background-color: #f3f4f6;
+        }
+        .chart-container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+        @media (max-width: 768px) {
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="nav">
+        <a href="../../dashboardUser.html">Kembali ke halaman utama</a>
+    </div>
+
+    <div class="container">
+        <h1 style="text-align: center; color: #3b82f6; margin-bottom: 30px;">
+            Statistik Jumlah Penduduk Desa
+        </h1>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <h2>Total Penduduk</h2>
+                <p id="total-penduduk">1200</p>
+            </div>
+            <div class="stat-card">
+                <h2>Laki-Laki</h2>
+                <p id="laki-laki">600</p>
+            </div>
+            <div class="stat-card">
+                <h2>Perempuan</h2>
+                <p id="perempuan">600</p>
+            </div>
+            <div class="stat-card">
+                <h2>Kepala Keluarga</h2>
+                <p id="kepala-keluarga">300</p>
+            </div>
+        </div>
+
+        <div class="chart-container">
+            <h2 style="text-align: center; color: #4b5563; margin-bottom: 20px;">
+                Distribusi Penduduk
+            </h2>
+            <canvas id="pie-chart" style="max-width: 400px; margin: 0 auto;"></canvas>
+        </div>
+
+        <div style="background-color: white; padding: 20px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+            <h2 style="color: #4b5563; margin-bottom: 20px;">Laporan Penduduk</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nama</th>
+                        <th>Usia</th>
+                        <th>Jenis Kelamin</th>
+                        <th>RT/RW</th>
+                    </tr>
+                </thead>
+                <tbody id="laporan-penduduk">
+                    <!-- Akan diisi oleh JavaScript -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        // Data statistik
+        const statistik = {
+            totalPenduduk: 1200,
+            lakiLaki: 600,
+            perempuan: 600,
+            kepalaKeluarga: 300
+        };
+
+        // Update statistik di halaman
+        document.getElementById('total-penduduk').textContent = statistik.totalPenduduk;
+        document.getElementById('laki-laki').textContent = statistik.lakiLaki;
+        document.getElementById('perempuan').textContent = statistik.perempuan;
+        document.getElementById('kepala-keluarga').textContent = statistik.kepalaKeluarga;
+
+        // Data laporan penduduk
+        const laporan = [
+            {
+                id: 1,
+                nama: "Budi Santoso",
+                usia: 45,
+                jenisKelamin: "Laki-Laki",
+                rtRw: "09/07"
+            },
+            {
+                id: 2,
+                nama: "Siti Aminah",
+                usia: 38,
+                jenisKelamin: "Perempuan",
+                rtRw: "09/07"
+            },
+            {
+                id: 3,
+                nama: "Tono Hartono",
+                usia: 60,
+                jenisKelamin: "Laki-Laki",
+                rtRw: "10/08"
+            },
+            {
+                id: 4,
+                nama: "Ani Fatimah",
+                usia: 25,
+                jenisKelamin: "Perempuan",
+                rtRw: "10/08"
+            }
+        ];
+
+        // Render laporan penduduk
+        const laporanPendudukEl = document.getElementById('laporan-penduduk');
+        laporan.forEach(item => {
+            const row = `
+                <tr>
+                    <td>${item.id}</td>
+                    <td>${item.nama}</td>
+                    <td>${item.usia}</td>
+                    <td>${item.jenisKelamin}</td>
+                    <td>${item.rtRw}</td>
+                </tr>
+            `;
+            laporanPendudukEl.innerHTML += row;
+        });
+
+        // Diagram Pie
+        const ctx = document.getElementById('pie-chart').getContext('2d');
+        new Chart(ctx, {
+            type: 'pie',
+            data: {
+                labels: ['Laki-Laki', 'Perempuan'],
+                datasets: [{
+                    label: 'Distribusi Penduduk',
+                    data: [statistik.lakiLaki, statistik.perempuan],
+                    backgroundColor: ['#36A2EB', '#FF6384'],
+                    hoverBackgroundColor: ['#36A2EB80', '#FF638480']
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Peta Lokasi Desa</title>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+  />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    #map {
+      width: 100%;
+      height: 500px;
+    }
+  </style>
+</head>
+<body class="min-h-screen bg-gray-100 py-8 px-4">
+  <nav class="bg-blue-500 p-4 shadow-md">
+    <a
+      href="../../dashboardUser.html"
+      class="text-white text-lg font-semibold hover:text-blue-200"
+    >
+      Kembali ke halaman utama
+    </a>
+  </nav>
+
+  <div class="max-w-6xl mx-auto">
+    <h1 class="text-2xl font-bold text-center text-blue-600 mb-8">
+      Peta Lokasi Desa
+    </h1>
+    <div id="map"></div>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const desaCoordinates = {
+        lat: -7.566562,
+        lng: 112.2220404,
+      };
+
+      const map = L.map("map").setView([desaCoordinates.lat, desaCoordinates.lng], 13);
+
+      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+      }).addTo(map);
+
+      const villageIcon = L.icon({
+        iconUrl: "https://img.icons8.com/emoji/48/000000/village-emoji.png",
+        iconSize: [32, 32],
+        iconAnchor: [16, 32],
+      });
+
+      const marker = L.marker([desaCoordinates.lat, desaCoordinates.lng], { icon: villageIcon }).addTo(map);
+
+      marker.bindPopup(
+        `<div>
+          <h3 class='text-lg font-bold'>Desa Contoh</h3>
+          <p class='text-sm'>Lokasi desa ini adalah contoh penggunaan peta dengan Leaflet.</p>
+        </div>`
+      );
+    });
+  </script>
+</body>
+</html>

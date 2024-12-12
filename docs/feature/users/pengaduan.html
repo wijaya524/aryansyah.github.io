@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Pengaduan Warga</title>
+    <script>
+        // Simulating React state and functionality with vanilla JavaScript
+        document.addEventListener('DOMContentLoaded', function() {
+            const pengaduan = [
+                {
+                    id: 1,
+                    nama: "Budi Santoso",
+                    topik: "Jalan Rusak",
+                    isi: "Mohon perbaikan jalan di RT 09 karena banyak lubang yang membahayakan pengendara.",
+                    tanggal: "10 Desember 2024",
+                },
+                {
+                    id: 2,
+                    nama: "Siti Aminah",
+                    topik: "Lampu Jalan",
+                    isi: "Lampu jalan di RT 07 sudah mati selama seminggu, mohon segera diperbaiki.",
+                    tanggal: "9 Desember 2024",
+                }
+            ];
+
+            function renderPengaduan() {
+                const daftarPengaduanEl = document.getElementById('daftar-pengaduan');
+                daftarPengaduanEl.innerHTML = pengaduan.map(item => `
+                    <div class="bg-white rounded-lg shadow-md p-6 border border-gray-200">
+                        <h3 class="text-lg font-semibold text-gray-800">${item.topik}</h3>
+                        <p class="text-sm text-gray-500 mb-2">
+                            Oleh: ${item.nama} | Tanggal: ${item.tanggal}
+                        </p>
+                        <p class="text-gray-700">${item.isi}</p>
+                    </div>
+                `).join('');
+            }
+
+            function handleSubmit(e) {
+                e.preventDefault();
+                
+                const namaEl = document.getElementById('nama');
+                const topikEl = document.getElementById('topik');
+                const isiEl = document.getElementById('isi');
+
+                if (namaEl.value && topikEl.value && isiEl.value) {
+                    pengaduan.push({
+                        id: pengaduan.length + 1,
+                        nama: namaEl.value,
+                        topik: topikEl.value,
+                        isi: isiEl.value,
+                        tanggal: new Date().toLocaleDateString()
+                    });
+
+                    // Clear form
+                    namaEl.value = '';
+                    topikEl.value = '';
+                    isiEl.value = '';
+
+                    // Re-render pengaduan list
+                    renderPengaduan();
+                }
+            }
+
+            // Initial render
+            renderPengaduan();
+
+            // Attach submit event
+            document.getElementById('pengaduan-form').addEventListener('submit', handleSubmit);
+        });
+    </script>
+</head>
+<body class="min-h-screen bg-gray-100 py-8 px-4">
+    <nav class="bg-blue-500 p-4 shadow-md">
+        <a href="../../dashboardUser.html" class="text-white text-lg font-semibold hover:text-blue-200">
+            Kembali ke halaman utama
+        </a>
+    </nav>
+    <div class="max-w-4xl mx-auto">
+        <h1 class="text-2xl font-bold text-center text-blue-600 mb-8">
+            Form Pengaduan Warga
+        </h1>
+
+        <!-- Form Pengaduan -->
+        <div class="bg-white rounded-lg shadow-md p-6 mb-8">
+            <form id="pengaduan-form">
+                <div class="mb-4">
+                    <label class="block text-sm font-medium text-gray-700 mb-2">
+                        Nama:
+                    </label>
+                    <input
+                        type="text"
+                        id="nama"
+                        name="nama"
+                        placeholder="Masukkan nama Anda"
+                        class="w-full px-4 py-2 border rounded-lg focus:ring focus:ring-blue-200"
+                    />
+                </div>
+                <div class="mb-4">
+                    <label class="block text-sm font-medium text-gray-700 mb-2">
+                        Topik Pengaduan:
+                    </label>
+                    <input
+                        type="text"
+                        id="topik"
+                        name="topik"
+                        placeholder="Masukkan topik pengaduan"
+                        class="w-full px-4 py-2 border rounded-lg focus:ring focus:ring-blue-200"
+                    />
+                </div>
+                <div class="mb-4">
+                    <label class="block text-sm font-medium text-gray-700 mb-2">
+                        Isi Pengaduan:
+                    </label>
+                    <textarea
+                        id="isi"
+                        name="isi"
+                        placeholder="Tulis pengaduan Anda"
+                        rows="4"
+                        class="w-full px-4 py-2 border rounded-lg focus:ring focus:ring-blue-200"
+                    ></textarea>
+                </div>
+                <button
+                    type="submit"
+                    class="bg-blue-500 text-white font-semibold py-2 px-6 rounded-lg hover:bg-blue-600 transition"
+                >
+                    Kirim Pengaduan
+                </button>
+            </form>
+        </div>
+
+        <!-- Daftar Pengaduan -->
+        <h2 class="text-xl font-bold text-gray-800 mb-4">
+            Daftar Pengaduan
+        </h2>
+        <div id="daftar-pengaduan" class="space-y-6">
+            <!-- Pengaduan will be dynamically rendered here -->
+        </div>
+    </div>
+</body>
+</html>
