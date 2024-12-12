@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pengajuan Surat</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+    <div class="max-w-lg mx-auto mt-10 p-6 bg-white shadow-md rounded-lg">
+        <nav class="bg-blue-500 p-4 shadow-md">
+            <a href="../../../dashboard/user" class="text-white text-lg font-semibold hover:text-blue-200">
+                Kembali ke halaman utama
+            </a>
+        </nav>
+        <h1 class="text-2xl font-bold text-center mb-6">Pengajuan Surat</h1>
+        <form>
+            <div class="mb-4">
+                <label for="jenisSurat" class="block text-sm font-medium text-gray-700">
+                    Jenis Surat
+                </label>
+                <select 
+                    name="jenisSurat" 
+                    id="jenisSurat" 
+                    class="w-full mt-1 p-2 border border-gray-300 rounded-lg focus:ring focus:ring-blue-200"
+                    required
+                >
+                    <option value="">Pilih jenis surat</option>
+                    <option value="Surat Keterangan Domisili">Surat Keterangan Domisili</option>
+                    <option value="Surat Pengantar RT/RW">Surat Pengantar RT/RW</option>
+                    <option value="Surat Keterangan Usaha">Surat Keterangan Usaha</option>
+                </select>
+            </div>
+
+            <div class="mb-4">
+                <label for="keterangan" class="block text-sm font-medium text-gray-700">
+                    Keterangan
+                </label>
+                <textarea 
+                    name="keterangan" 
+                    id="keterangan" 
+                    rows="4" 
+                    class="w-full mt-1 p-2 border border-gray-300 rounded-lg focus:ring focus:ring-blue-200"
+                    placeholder="Masukkan keterangan tambahan"
+                    required
+                ></textarea>
+            </div>
+
+            <button 
+                type="submit" 
+                class="w-full bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 focus:ring focus:ring-blue-200"
+            >
+                Ajukan Surat
+            </button>
+        </form>
+    </div>
+</body>
+</html>
