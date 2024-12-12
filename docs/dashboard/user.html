@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desa PandanWangi - User Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="flex items-center justify-between p-4 bg-blue-600 text-white shadow-md">
+        <div class="flex items-center gap-4">
+            <img src="../images/logo-jombang.png" alt="jombang" class="w-10 h-10" />
+            <h1 class="text-lg sm:text-xl font-semibold">Desa PandanWangi</h1>
+        </div>
+        <div>
+            <a href="/" class="bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-4 rounded">
+                Logout
+            </a>
+        </div>
+    </nav>
+
+    <!-- Profile Section -->
+    <div class="flex flex-wrap justify-between items-center rounded-lg overflow-hidden mt-6 bg-slate-800 px-4 sm:px-8 py-4 mx-4 sm:mx-7 gap-4">
+        <!-- Profile Section -->
+        <div class="flex gap-4 items-center w-full sm:w-auto">
+            <img
+                src="../images/fotoku.jpg"
+                alt="profile"
+                class="rounded-full border border-gray-300"
+                width="80"
+                height="80"
+            />
+            <div>
+                <div class="flex gap-2 mb-2">
+                    <label
+                        for="nama"
+                        class="block text-sm font-medium text-slate-200"
+                    >
+                        Nama:
+                    </label>
+                    <input
+                        type="text"
+                        disabled
+                        value="Aryansyah"
+                        class="bg-gray-300 rounded border-none py-1 px-2"
+                    />
+                </div>
+                <div class="flex gap-2 mb-2">
+                    <label
+                        for="rt-rw"
+                        class="block text-sm font-medium text-slate-200"
+                    >
+                        RT/RW:
+                    </label>
+                    <input
+                        type="text"
+                        disabled
+                        value="09/07"
+                        class="bg-gray-300 rounded border-none py-1 px-2"
+                    />
+                </div>
+                <p class="mt-2 text-sm text-gray-300">Masyarakat</p>
+            </div>
+        </div>
+
+        <!-- Edit Profile Section -->
+        <div class="w-full sm:w-auto mt-2 sm:mt-0">
+            <a
+                href=""
+                class="text-slate-200 hover:underline text-sm sm:text-base"
+            >
+                Edit Profile
+            </a>
+        </div>
+    </div>
+
+    <!-- Grid Section: Cards -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 p-6">
+        <!-- Pengumuman -->
+        <a
+            href="../../feature/user/pengumuman"
+            class="bg-white rounded-lg shadow-md p-4 flex flex-col items-center text-center hover:shadow-lg transition-shadow"
+        >
+            <div class="w-12 h-12 mb-2">
+                <img
+                    src="../images/pengumuman.png"
+                    alt="pengumuman"
+                    class="object-contain"
+                />
+            </div>
+            <h2 class="text-sm sm:text-lg font-medium text-gray-700">
+                Pengumuman & Berita
+            </h2>
+        </a>
+
+        <!-- Pengajuan Surat -->
+        <a
+            href="../../feature/user/pengajuanSurat"
+            class="bg-white rounded-lg shadow-md p-4 flex flex-col items-center text-center hover:shadow-lg transition-shadow"
+        >
+            <div class="w-12 h-12 mb-2">
+                <img src="../images/surat.png" alt="surat" class="object-contain" />
+            </div>
+            <h2 class="text-sm sm:text-lg font-medium text-gray-700">
+                Pengajuan Surat
+            </h2>
+        </a>
+
+        <!-- Pengaduan -->
+        <a
+            href="../../feature/user/pengaduan"
+            class="bg-white rounded-lg shadow-md p-4 flex flex-col items-center text-center hover:shadow-lg transition-shadow"
+        >
+            <div class="w-12 h-12 mb-2">
+                <img src="../images/pengaduan.png" alt="pengaduan" class="object-contain" />
+            </div>
+            <h2 class="text-sm sm:text-lg font-medium text-gray-700">
+                Pengaduan Warga
+            </h2>
+        </a>
+
+        <!-- Statistik -->
+        <a
+            href="../../feature/user/statistik"
+            class="bg-white rounded-lg shadow-md p-4 flex flex-col items-center text-center hover:shadow-lg transition-shadow"
+        >
+            <div class="w-12 h-12 mb-2">
+                <img src="../images/statistik.png" alt="statistik" class="object-contain" />
+            </div>
+            <h2 class="text-sm sm:text-lg font-medium text-gray-700">
+                Statistik dan Laporan
+            </h2>
+        </a>
+
+        <!-- Keuangan -->
+        <a
+            href="../../feature/user/keuangan"
+            class="bg-white rounded-lg shadow-md p-4 flex flex-col items-center text-center hover:shadow-lg transition-shadow"
+        >
+            <div class="w-12 h-12 mb-2">
+                <img src="../images/keuangan.png" alt="keuangan" class="object-contain" />
+            </div>
+            <h2 class="text-sm sm:text-lg font-medium text-gray-700">
+                Keuangan Desa
+            </h2>
+        </a>
+
+        <!-- Peta -->
+        <a
+            href="../../feature/user/peta"
+            class="bg-white rounded-lg shadow-md p-4 flex flex-col items-center text-center hover:shadow-lg transition-shadow"
+        >
+            <div class="w-12 h-12 mb-2">
+                <img src="../images/MAP.png" alt="map" class="object-contain" />
+            </div>
+            <h2 class="text-sm sm:text-lg font-medium text-gray-700">
+                Peta Desa
+            </h2>
+        </a>
+    </div>
+</body>
+</html>
