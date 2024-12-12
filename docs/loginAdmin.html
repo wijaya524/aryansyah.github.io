@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="flex justify-center items-center h-screen bg-gray-100 px-4 sm:px-6 lg:px-8">
+        <form action="/dashboard/admin" method="post" class="bg-white shadow-md rounded px-6 pt-6 pb-8 mb-4 w-full sm:max-w-sm">
+          <h2 class="text-2xl font-bold text-center mb-6 text-gray-800">Admin Authentication</h2>
+    
+          <div class="mb-4">
+            <label for="nik" class="block text-gray-700 text-sm font-bold mb-2">
+              Masukkan NIK Anda
+            </label>
+            <input type="number" id="nik" name="nik" class="no-arrows shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus-shadow-outline" placeholder="Masukkan NIK" oninput="this.value = this.value.slice(0, 16);">
+          </div>
+    
+          <div class="flex items-center justify-center">
+            <button type="submit" class="w-full sm:w-auto bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+              Submit
+            </button>
+          </div>
+        </form>
+      </div>
+</body>
+</html>
